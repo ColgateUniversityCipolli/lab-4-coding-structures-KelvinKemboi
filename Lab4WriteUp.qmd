@@ -215,8 +215,8 @@ evaluate.row<-function(dat){
     return("high")
   }
 }
-evaluate.row(12)
-
+df$category <- sapply(df$x1, evaluate.row)
+(df$category)
 ```
 
 ## Part k
@@ -299,6 +299,9 @@ instructions.section<-html_element(recipe.item,"#instructions")
 ## Part f
 Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from `instructions.section` using `html_elements(...)` (note the added s) and save the results to an object called `instructions`.
 
+**Solution:**
+
+Pulled all the individual instructions then assigned it to ``instructions.section`
 ```{r}
 #| size: "scriptsize"
 instructions<-html_elements(instructions.section,"li")
@@ -311,10 +314,10 @@ Find the class of the recipe image and pull the HTML using `html_element(...)` a
 
 **Solutions:**
 
-Pulled the image html by its class using html_element()
+Pulled the image html by its class using `html_element()`
 ```{r}
 #| size: "scriptsize"
-image.element<-html_element(recipe.item,".figure")
+image.element<-html_element(recipe.item,".figure-img")
 (image.element)
 ```
 
@@ -322,9 +325,13 @@ image.element<-html_element(recipe.item,".figure")
 Use the `html_attr(...)` function to pull the source link ("src"). Then, use `paste(...)` to prepend the source link with "website/" so we have the full link.<br/>
 **Note**: This would be like adding "https://www.website.com" to get the absolute link.
 
+**Solution:**
+
+Pulled image source link by attribute then pasted "website/" to the link using `paste()`
 ```{r}
 #| size: "scriptsize"
-html_attr(recipe.item,"section#ingredients")
+image.url <-html_attr(image.element,"src")
+image.url <- paste("website/", image.url, sep = "")
 ```
 
 ## Part i
@@ -332,8 +339,10 @@ Now that we have all the things we need, let's try to print the recipe. Below, I
 
 **Image**
 
+**Solution:**
 ```{r}
-#| eval: false
+#| echo: false
+#| results: asis
 # width="50%" shrinks the image for printing
 recipe.title <- recipe.item |> html_element("h1") |> html_text()
 cat(paste('![', recipe.title, '](', image.url, "){width=50%}", sep="")) 
@@ -341,16 +350,20 @@ cat(paste('![', recipe.title, '](', image.url, "){width=50%}", sep=""))
 
 **Ingredients**
 
+**Solution:**
 ```{r}
-#| eval: false
+#| echo: false
+#| results: asis
 formatted_list <- paste("-", html_text(ingredients))
 cat(formatted_list, sep = "\n")
 ```
 
 **Instructions**
 
+**Solution:**
 ```{r}
-#| eval: false
+#| echo: false
+#| results: asis
 formatted_list <- paste("1.", html_text(instructions))
 cat(formatted_list, sep = "\n")
 ```
