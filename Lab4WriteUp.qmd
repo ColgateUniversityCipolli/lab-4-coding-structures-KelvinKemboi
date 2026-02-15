@@ -117,7 +117,7 @@ Ask for the column `x1`.
 Asking for the `x1` column
 ```{r}
 #| size: "scriptsize"
-n=df[,1]
+df[,1]
 ```
 
 ## Part d
@@ -184,7 +184,7 @@ Use your function to create a new column `total.score` in our data frame `df`.
 
 **Solution:**
 
-creating `calculate.score` function and using for loop to perform operation. Stores valu
+creating `calculate.score` function and using for loop to perform operation. Stores the values in `total.score` and return that.
 ```{r}
 #| size: "scriptsize"
 calculate.score<-function(x_1,x_2,x_3){
@@ -223,7 +223,37 @@ df$category <- sapply(df$x1, evaluate.row)
 Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.
 
 **Solution:**
-In (h), a for-loop is necessary to fill the rows in the newly created column with product of `x1` and `x2`. In (i), a function is needed to have arguement representations of the `x1`, `x2`, `x3` columns to effeciently calculate the computation. I implemented a for-loop similar to (h) to fill the newly formed `total.score` column with the computed values. In (j), using the `evaluate.row` function...
+In (h), instead of using the for-loop, I can directly multiply `x1` column and `x2` column and have it in `df$x12.2` through vectorization. `R` will autmoatically compute row by row.
+
+```{r}
+#| size: "scriptsize"
+(df$x12.2 <- df$x1 * df$x2)
+```
+
+In (i), a function and for-loop aren't needed, and I can also directly apply the formula to get the results. I can directly call the columns `df$x1`, `df$x2`, and `df$x3` and pass them into the folrmula and `R` will autmoatically compute row by row
+
+```{r}
+#| size: "scriptsize"
+(df$total.score <- (df$x1 * 2) + df$x2 - df$x3)
+```
+
+In (j), the function is necessary to pass the argument in the conditionals. Since the outcome is dependant on the if-else conditions, I would need the function to get the result of a single value then use `sapply` to apply it to the whole column `df$x1`.  I could also use a for-loop like this:
+
+```{r}
+#| size: "scriptsize"
+df$category <- rep(NA, nrow(df))
+
+for(i in 1:nrow(df)){
+  if(df$x1[i] < 4){
+    df$category[i] <- "low"
+  }else if(df$x1[i] <= 7){
+    df$category[i] <- "mid"
+  }else{
+    df$category[i] <- "high"
+  }
+}
+(df$category)
+```
 
 # Complete Tasks for One Recipe
 
@@ -233,7 +263,7 @@ Install and load the `rvest` package [@rvest].
 
 **Solution:**
 
-Installing and loading `rvest`
+Installed and loaded `rvest`
 ```{r}
 #| size: "scriptsize"
 
@@ -252,6 +282,7 @@ Reading the html website using ``read_html()`
 ```{r}
 #| size: "scriptsize"
 recipe.item<-read_html("website/KimchiGrilledCheese.html")
+(recipe.item)
 ```
 
 
@@ -340,6 +371,8 @@ Now that we have all the things we need, let's try to print the recipe. Below, I
 **Image**
 
 **Solution:**
+
+Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
 ```{r}
 #| echo: false
 #| results: asis
@@ -351,6 +384,8 @@ cat(paste('![', recipe.title, '](', image.url, "){width=50%}", sep=""))
 **Ingredients**
 
 **Solution:**
+
+Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
 ```{r}
 #| echo: false
 #| results: asis
@@ -361,6 +396,8 @@ cat(formatted_list, sep = "\n")
 **Instructions**
 
 **Solution:**
+
+Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
 ```{r}
 #| echo: false
 #| results: asis
