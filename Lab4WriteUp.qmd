@@ -363,6 +363,7 @@ Pulled image source link by attribute then pasted "website/" to the link using `
 #| size: "scriptsize"
 image.url <-html_attr(image.element,"src")
 image.url <- paste("website/", image.url, sep = "")
+(image.url)
 ```
 
 ## Part i
