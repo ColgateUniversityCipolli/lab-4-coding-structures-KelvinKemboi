@@ -166,6 +166,10 @@ df[seq(1, 10, 2),]
 
 ## Part h
 Below, I create an empty column called `x12`. Fill in the details of the `for(...)` loop to ensure `x12` is the product of `x1` and `x2`.
+
+**Solution:**
+
+created a new column `df$x12` that is a product of values in columns `x1` and `x2`
 ```{r}
 #| size: "scriptsize"
 n <- nrow(df)                # How many rows to we have to fill? 10 rows
@@ -223,6 +227,7 @@ df$category <- sapply(df$x1, evaluate.row)
 Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.
 
 **Solution:**
+
 In (h), instead of using the for-loop, I can directly multiply `x1` column and `x2` column and have it in `df$x12.2` through vectorization. `R` will autmoatically compute row by row.
 
 ```{r}
@@ -422,9 +427,13 @@ When you render this document, no code should be visible. Instead, you should se
 ## Why a fake website?
 Read [https://www.scrapingbee.com/blog/is-web-scraping-legal/](Is Web Sraping Legal?). Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are *very* long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.
 
+**Solution:**
+
+
 ## Conditionals
 Did you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?
 
+**
 ## Loops
 Did you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?
 
