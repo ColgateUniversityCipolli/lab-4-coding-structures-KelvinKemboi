@@ -158,7 +158,7 @@ Create a sequence from 1 to 10 by 2 and use it to print the odd rows of the data
 
 **Solution:**
 
-Printing the odd rows in data frame
+Printing the odd rows in data frame by using `seq` function.
 ```{r}
 #| size: "scriptsize"
 df[seq(1, 10, 2),]
@@ -169,7 +169,7 @@ Below, I create an empty column called `x12`. Fill in the details of the `for(..
 
 **Solution:**
 
-created a new column `df$x12` that is a product of values in columns `x1` and `x2`
+Created a new column `df$x12` that is a product of values in columns `x1` and `x2`.
 ```{r}
 #| size: "scriptsize"
 n <- nrow(df)                # How many rows to we have to fill? 10 rows
@@ -188,7 +188,7 @@ Use your function to create a new column `total.score` in our data frame `df`.
 
 **Solution:**
 
-creating `calculate.score` function and using for loop to perform operation. Stores the values in `total.score` and return that.
+Created a `calculate.score` function and used a for-loop to loop throuh elements in the column. I then used the formula given to compute and store the results in `total.score`.
 ```{r}
 #| size: "scriptsize"
 calculate.score<-function(x_1,x_2,x_3){
@@ -207,7 +207,7 @@ Create a function called `evaluate.row(...)` that takes one argument and returns
 
 **Solution:**
 
-Using if-statements in the `evaluate.row` function to determine is a number is "high", "low", or "mid"
+Used if-statements in the `evaluate.row` function to determine is a number is "high", "low", or "mid"
 ```{r}
 #| size: "scriptsize"
 evaluate.row<-function(dat){
@@ -228,21 +228,21 @@ Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectoriz
 
 **Solution:**
 
-In (h), instead of using the for-loop, I can directly multiply `x1` column and `x2` column and have it in `df$x12.2` through vectorization. `R` will autmoatically compute row by row.
+In (h), instead of using the loops, I can directly multiply `x1` column and `x2` column and have it in `df$x12.2` through vectorization. `R` will autmoatically compute row by row.
 
 ```{r}
 #| size: "scriptsize"
 (df$x12.2 <- df$x1 * df$x2)
 ```
 
-In (i), a function and for-loop aren't needed, and I can also directly apply the formula to get the results. I can directly call the columns `df$x1`, `df$x2`, and `df$x3` and pass them into the folrmula and `R` will autmoatically compute row by row
+Like in (h), a function and for loop aren't needed in (i), and I can also directly apply the formula to get the results. I can call the columns `df$x1`, `df$x2`, and `df$x3` and pass them into the formula and `R` will automatically compute row by row
 
 ```{r}
 #| size: "scriptsize"
 (df$total.score <- (df$x1 * 2) + df$x2 - df$x3)
 ```
 
-In (j), the function is necessary to pass the argument in the conditionals. Since the outcome is dependant on the if-else conditions, I would need the function to get the result of a single value then use `sapply` to apply it to the whole column `df$x1`.  I could also use a for-loop like this:
+In (j), the function is necessary to pass the argument in the conditionals. Since the outcome is dependant on the if-else conditions, I would need the function to get the result of a single value then use `sapply` to apply it to the whole column `df$x1` in the data frame.  I could also use loops like this:
 
 ```{r}
 #| size: "scriptsize"
@@ -268,7 +268,7 @@ Install and load the `rvest` package [@rvest].
 
 **Solution:**
 
-Installed and loaded `rvest`
+Installed and loaded `rvest` package.
 ```{r}
 #| size: "scriptsize"
 
@@ -283,7 +283,7 @@ Load the html of the `website/KimchiGrilledCheese.html` using the `read_html()` 
 
 **Solution:**
 
-Reading the html website using ``read_html()`
+Read the html website using the `read_html()` function
 ```{r}
 #| size: "scriptsize"
 recipe.item<-read_html("website/KimchiGrilledCheese.html")
@@ -300,7 +300,7 @@ Find the name of the Ingredients section of the website and pull the HTML of the
 
 **Solution:**
 
-Pulling a reading the ingredients section `ingredients`
+Pulled the ingredients section by ID then stored it in the `ingredients.section` variable
 ```{r}
 #| size: "scriptsize"
 ingredients.section<-html_element(recipe.item, "#ingredients")
@@ -313,7 +313,7 @@ Now, we want to obtain all of the itemized items. Find the element type the indi
 
 **Solution:**
 
-Finding all itemized items using `html_elements()`
+Found all itemized items using `html_elements()` then stores them in `ingredients`
 ```{r}
 #| size: "scriptsize"
 ingredients<-html_elements(ingredients.section,"li")
@@ -325,7 +325,7 @@ Similar to Part c. Find the name of the Instructions section of the website and 
 
 **Solution:**
 
-Pulled the instructions section using `html_element()`
+Pulled the instructions section by ID using `html_element()` and stored it in the `instruction.section` variable
 ```{r}
 #| size: "scriptsize"
 instructions.section<-html_element(recipe.item,"#instructions")
@@ -337,7 +337,7 @@ Now, we want to obtain all of the enumerated items. Find the element type the in
 
 **Solution:**
 
-Pulled all the individual instructions then assigned it to ``instructions.section`
+Pulled all the individual instructions then stored them in `instructions`
 ```{r}
 #| size: "scriptsize"
 instructions<-html_elements(instructions.section,"li")
@@ -350,7 +350,7 @@ Find the class of the recipe image and pull the HTML using `html_element(...)` a
 
 **Solutions:**
 
-Pulled the image html by its class using `html_element()`
+Pulled the image html by its class name using `html_element()` and stored it in `image.element` object
 ```{r}
 #| size: "scriptsize"
 image.element<-html_element(recipe.item,".figure-img")
@@ -363,7 +363,7 @@ Use the `html_attr(...)` function to pull the source link ("src"). Then, use `pa
 
 **Solution:**
 
-Pulled image source link by attribute then pasted "website/" to the link using `paste()`
+Pulled image source link by attribute then pasted "website/" to the link using `paste()`. Stored the final link in `image.url`
 ```{r}
 #| size: "scriptsize"
 image.url <-html_attr(image.element,"src")
@@ -422,6 +422,10 @@ Open `Menu.qmd` and add code to complete the following.
 
 When you render this document, no code should be visible. Instead, you should see a five-page document as described above.
 
+**Solution:**
+
+See `menu.qmd` for this assignment.
+
 # Describe your work!
 
 ## Why a fake website?
@@ -429,15 +433,29 @@ Read [https://www.scrapingbee.com/blog/is-web-scraping-legal/](Is Web Sraping Le
 
 **Solution:**
 
+Many commercial sites restrict data collection in their Terms of Service even if the content is publicly visible. Since the website we used was made by the professor, I was able to extract the contents and do the lab assignment while also ensuring that I don't violating a real company’s terms of service.
 
 ## Conditionals
 Did you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?
 
-**
+**Solution:**
+
+I did not use conditional statements in my `menu.qmd` assignment. The structure of the recipe pages was consistent (every page had an image, an ingredients list, and an instructions list with the same HTML IDs), so there was no need to check whether elements existed before extracting them. 
+
+Although I manually checked if the elements and IDs were there, I could have added conditional statements to handle potential errors. Like if there was a file without the element, the conditionals would help print an error message instead of breaking the document.
+
 ## Loops
 Did you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?
+
+**Solution:**
+
+Yes. I used a for loop when creating the grocery list on the first page of `menu.qmd`. After randomly selecting one breakfast recipe and three dinner recipes using the `sample()` function, I stored them in a vector `recipe_files` and iterated through each file. For each selected recipe, I extracted the ingredients and printed them together to create a combined grocery list.
+
+I chose not to use loops for printing the full recipes. Instead, I referenced each randomly selected file directly. A loop could have also been used to print each recipe page automatically, but I kept the sections separate to control the formatting of each page.
 
 ## Functions
 Did you use functions in your code? If yes, how. If not, are there places you could have used them but did something else?
 
+**Solution:**
 
+I didn't use functions in `menu.qmd`. I chose to keep the code explicit in each section to make the process easier to follow for me. However, I could have used functions to avoid repeating code when printing each recipe (since the same steps are performed for each recipe).

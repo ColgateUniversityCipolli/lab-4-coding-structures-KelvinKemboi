@@ -290,7 +290,7 @@ window.Quarto = {
 <h2 data-number="1.8" class="anchored" data-anchor-id="part-g"><span class="header-section-number">1.8</span> Part g</h2>
 <p>Create a sequence from 1 to 10 by 2 and use it to print the odd rows of the data frame.</p>
 <p><strong>Solution:</strong></p>
-<p>Printing the odd rows in data frame</p>
+<p>Printing the odd rows in data frame by using <code>seq</code> function.</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -312,7 +312,7 @@ window.Quarto = {
 <h2 data-number="1.9" class="anchored" data-anchor-id="part-h"><span class="header-section-number">1.9</span> Part h</h2>
 <p>Below, I create an empty column called <code>x12</code>. Fill in the details of the <code>for(...)</code> loop to ensure <code>x12</code> is the product of <code>x1</code> and <code>x2</code>.</p>
 <p><strong>Solution:</strong></p>
-<p>created a new column <code>df$x12</code> that is a product of values in columns <code>x1</code> and <code>x2</code></p>
+<p>Created a new column <code>df$x12</code> that is a product of values in columns <code>x1</code> and <code>x2</code>.</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -335,7 +335,7 @@ window.Quarto = {
 <h2 data-number="1.10" class="anchored" data-anchor-id="part-i"><span class="header-section-number">1.10</span> Part i</h2>
 <p>Write a function called <code>calculate.score(...)</code> that takes three arguments representing <code>x1</code>, <code>x2</code>, and <code>x3</code>) and returns a single value based on the formula: <span class="math display">\[Score = (x_1 \times 2) + x_2 - x_3\]</span> Use your function to create a new column <code>total.score</code> in our data frame <code>df</code>.</p>
 <p><strong>Solution:</strong></p>
-<p>creating <code>calculate.score</code> function and using for loop to perform operation. Stores the values in <code>total.score</code> and return that.</p>
+<p>Created a <code>calculate.score</code> function and used a for-loop to loop throuh elements in the column. I then used the formula given to compute and store the results in <code>total.score</code>.</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -360,7 +360,7 @@ window.Quarto = {
 <h2 data-number="1.11" class="anchored" data-anchor-id="part-j"><span class="header-section-number">1.11</span> Part j</h2>
 <p>Create a function called <code>evaluate.row(...)</code> that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use <code>sapply(...)</code> to apply it to column <code>x1</code>.</p>
 <p><strong>Solution:</strong></p>
-<p>Using if-statements in the <code>evaluate.row</code> function to determine is a number is “high”, “low”, or “mid”</p>
+<p>Used if-statements in the <code>evaluate.row</code> function to determine is a number is “high”, “low”, or “mid”</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -387,7 +387,7 @@ window.Quarto = {
 <h2 data-number="1.12" class="anchored" data-anchor-id="part-k"><span class="header-section-number">1.12</span> Part k</h2>
 <p>Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.</p>
 <p><strong>Solution:</strong></p>
-<p>In (h), instead of using the for-loop, I can directly multiply <code>x1</code> column and <code>x2</code> column and have it in <code>df$x12.2</code> through vectorization. <code>R</code> will autmoatically compute row by row.</p>
+<p>In (h), instead of using the loops, I can directly multiply <code>x1</code> column and <code>x2</code> column and have it in <code>df$x12.2</code> through vectorization. <code>R</code> will autmoatically compute row by row.</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -399,7 +399,7 @@ window.Quarto = {
 </div>
 </div>
 <p></p>
-<p>In (i), a function and for-loop aren’t needed, and I can also directly apply the formula to get the results. I can directly call the columns <code>df$x1</code>, <code>df$x2</code>, and <code>df$x3</code> and pass them into the folrmula and <code>R</code> will autmoatically compute row by row</p>
+<p>Like in (h), a function and for loop aren’t needed in (i), and I can also directly apply the formula to get the results. I can call the columns <code>df$x1</code>, <code>df$x2</code>, and <code>df$x3</code> and pass them into the formula and <code>R</code> will automatically compute row by row</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -411,7 +411,7 @@ window.Quarto = {
 </div>
 </div>
 <p></p>
-<p>In (j), the function is necessary to pass the argument in the conditionals. Since the outcome is dependant on the if-else conditions, I would need the function to get the result of a single value then use <code>sapply</code> to apply it to the whole column <code>df$x1</code>. I could also use a for-loop like this:</p>
+<p>In (j), the function is necessary to pass the argument in the conditionals. Since the outcome is dependant on the if-else conditions, I would need the function to get the result of a single value then use <code>sapply</code> to apply it to the whole column <code>df$x1</code> in the data frame. I could also use loops like this:</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -442,7 +442,7 @@ window.Quarto = {
 <h2 data-number="2.1" class="anchored" data-anchor-id="part-a-1"><span class="header-section-number">2.1</span> Part a</h2>
 <p>Install and load the <code>rvest</code> package <span class="citation" data-cites="rvest">(<a href="#ref-rvest" role="doc-biblioref">Wickham 2025</a>)</span>.</p>
 <p><strong>Solution:</strong></p>
-<p>Installed and loaded <code>rvest</code></p>
+<p>Installed and loaded <code>rvest</code> package.</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -457,7 +457,7 @@ window.Quarto = {
 <h2 data-number="2.2" class="anchored" data-anchor-id="part-b-2"><span class="header-section-number">2.2</span> Part b</h2>
 <p>Load the html of the <code>website/KimchiGrilledCheese.html</code> using the <code>read_html()</code> function and save the result to an object called <code>recipe.item</code>. We will use the Kimchi Grilled Cheese recipe as our prototype and extend this workflow to all recipes, so try to be as general as possible. If you do look at it, you’ll notice it contains the html we saw in the developer tools in class.<br> <strong>Hint</strong>: You can use <code>read_html(...)</code> like <code>read.csv(...)</code>. Don’t forget you can use the documentation to help use it.</p>
 <p><strong>Solution:</strong></p>
-<p>Reading the html website using `<code>read_html()</code></p>
+<p>Read the html website using the <code>read_html()</code> function</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -479,7 +479,7 @@ window.Quarto = {
 <p>Open the html file in a web browser and open developer tools. In chrome-based browsers, you can do this by pressing the three verticle dots in the upper-right corner, clicking “more tools”, then “developer tools”.</p>
 <p>Find the name of the Ingredients section of the website and pull the HTML of the function using <code>html_element(...)</code> and save the results to an object called <code>ingredients.section</code>. <br> <strong>Hint</strong>: You can ask for elements by id using a preceeding “#”. See <code>?html_element(...)</code> for a helpful example.</p>
 <p><strong>Solution:</strong></p>
-<p>Pulling a reading the ingredients section <code>ingredients</code></p>
+<p>Pulled the ingredients section by ID then stored it in the <code>ingredients.section</code> variable</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -500,7 +500,7 @@ window.Quarto = {
 <h2 data-number="2.4" class="anchored" data-anchor-id="part-d-1"><span class="header-section-number">2.4</span> Part d</h2>
 <p>Now, we want to obtain all of the itemized items. Find the element type the individual ingredients and pull all of them from <code>ingredients.section</code> using <code>html_elements(...)</code> (note the added s) and save the results to an object called <code>ingredients</code>.<br> <strong>Hint</strong>: You can ask for elements by type by simply specifying the tag (e.g., “p” for paragraph). See `?html_element for a helpful example.</p>
 <p><strong>Solution:</strong></p>
-<p>Finding all itemized items using <code>html_elements()</code></p>
+<p>Found all itemized items using <code>html_elements()</code> then stores them in <code>ingredients</code></p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -527,7 +527,7 @@ window.Quarto = {
 <h2 data-number="2.5" class="anchored" data-anchor-id="part-e-1"><span class="header-section-number">2.5</span> Part e</h2>
 <p>Similar to Part c.&nbsp;Find the name of the Instructions section of the website and pull the HTML of the function using <code>html_element(...)</code> and save the results to an object called <code>instructions.section</code>.<br></p>
 <p><strong>Solution:</strong></p>
-<p>Pulled the instructions section using <code>html_element()</code></p>
+<p>Pulled the instructions section by ID using <code>html_element()</code> and stored it in the <code>instruction.section</code> variable</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -548,7 +548,7 @@ window.Quarto = {
 <h2 data-number="2.6" class="anchored" data-anchor-id="part-f-1"><span class="header-section-number">2.6</span> Part f</h2>
 <p>Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from <code>instructions.section</code> using <code>html_elements(...)</code> (note the added s) and save the results to an object called <code>instructions</code>.</p>
 <p><strong>Solution:</strong></p>
-<p>Pulled all the individual instructions then assigned it to `<code>instructions.section</code></p>
+<p>Pulled all the individual instructions then stored them in <code>instructions</code></p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -571,7 +571,7 @@ window.Quarto = {
 <h2 data-number="2.7" class="anchored" data-anchor-id="part-g-1"><span class="header-section-number">2.7</span> Part g</h2>
 <p>Find the class of the recipe image and pull the HTML using <code>html_element(...)</code> and save the results to an object called <code>image.element</code>. <br> <strong>Hint</strong>: You can ask for elements by class using a preceeding “.”. See <code>?html_element(...)</code> for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one.</p>
 <p><strong>Solutions:</strong></p>
-<p>Pulled the image html by its class using <code>html_element()</code></p>
+<p>Pulled the image html by its class name using <code>html_element()</code> and stored it in <code>image.element</code> object</p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -590,7 +590,7 @@ window.Quarto = {
 <h2 data-number="2.8" class="anchored" data-anchor-id="part-h-1"><span class="header-section-number">2.8</span> Part h</h2>
 <p>Use the <code>html_attr(...)</code> function to pull the source link (“src”). Then, use <code>paste(...)</code> to prepend the source link with “website/” so we have the full link.<br> <strong>Note</strong>: This would be like adding “https://www.website.com” to get the absolute link.</p>
 <p><strong>Solution:</strong></p>
-<p>Pulled image source link by attribute then pasted “website/” to the link using <code>paste()</code></p>
+<p>Pulled image source link by attribute then pasted “website/” to the link using <code>paste()</code>. Stored the final link in <code>image.url</code></p>
 <p></p>
 <div class="cell">
 <details class="code-fold">
@@ -659,24 +659,36 @@ window.Quarto = {
 <li>Print the image, ingredients, and instructions for each receipe on the subsequent pages.</li>
 </ol>
 <p>When you render this document, no code should be visible. Instead, you should see a five-page document as described above.</p>
+<p><strong>Solution:</strong></p>
+<p>See <code>menu.qmd</code> for this assignment.</p>
 </section>
 <section id="describe-your-work" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Describe your work!</h1>
 <section id="why-a-fake-website" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="why-a-fake-website"><span class="header-section-number">4.1</span> Why a fake website?</h2>
 <p>Read <a href="Is%20Web%20Sraping%20Legal?">https://www.scrapingbee.com/blog/is-web-scraping-legal/</a>. Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are <em>very</em> long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.</p>
+<p><strong>Solution:</strong></p>
+<p>Many commercial sites restrict data collection in their Terms of Service even if the content is publicly visible. Since the website we used was made by the professor, I was able to extract the contents and do the lab assignment while also ensuring that I don’t violating a real company’s terms of service.</p>
 </section>
 <section id="conditionals" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="conditionals"><span class="header-section-number">4.2</span> Conditionals</h2>
 <p>Did you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?</p>
+<p><strong>Solution:</strong></p>
+<p>I did not use conditional statements in my <code>menu.qmd</code> assignment. The structure of the recipe pages was consistent (every page had an image, an ingredients list, and an instructions list with the same HTML IDs), so there was no need to check whether elements existed before extracting them.</p>
+<p>Although I manually checked if the elements and IDs were there, I could have added conditional statements to handle potential errors. Like if there was a file without the element, the conditionals would help print an error message instead of breaking the document.</p>
 </section>
 <section id="loops" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="loops"><span class="header-section-number">4.3</span> Loops</h2>
 <p>Did you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?</p>
+<p><strong>Solution:</strong></p>
+<p>Yes. I used a for loop when creating the grocery list on the first page of <code>menu.qmd</code>. After randomly selecting one breakfast recipe and three dinner recipes using the <code>sample()</code> function, I stored them in a vector <code>recipe_files</code> and iterated through each file. For each selected recipe, I extracted the ingredients and printed them together to create a combined grocery list.</p>
+<p>I chose not to use loops for printing the full recipes. Instead, I referenced each randomly selected file directly. A loop could have also been used to print each recipe page automatically, but I kept the sections separate to control the formatting of each page.</p>
 </section>
 <section id="functions" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="functions"><span class="header-section-number">4.4</span> Functions</h2>
 <p>Did you use functions in your code? If yes, how. If not, are there places you could have used them but did something else?</p>
+<p><strong>Solution:</strong></p>
+<p>I didn’t use functions in <code>menu.qmd</code>. I chose to keep the code explicit in each section to make the process easier to follow for me. However, I could have used functions to avoid repeating code when printing each recipe (since the same steps are performed for each recipe).</p>
 
 </section>
 </section>
