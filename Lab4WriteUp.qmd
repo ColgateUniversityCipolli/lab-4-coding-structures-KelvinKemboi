@@ -104,6 +104,7 @@ Use the `head(...)` function to peek at the data frame.
 **Solution:**
 
 Running `head(df)` to look at first few elements in the df
+
 ```{r}
 #| size: "scriptsize"
 head(df)
@@ -115,6 +116,7 @@ Ask for the column `x1`.
 **Solution:**
 
 Asking for the `x1` column
+
 ```{r}
 #| size: "scriptsize"
 df[,1]
@@ -126,6 +128,7 @@ Ask for the fifth row of the data frame.
 **Solution:**
 
 Getting 5th row
+
 ```{r}
 #| size: "scriptsize"
 df[5,]
@@ -137,6 +140,7 @@ Ask for the the value of `x1` in the fifth row of the data frame.
 **Solution:**
 
 5th row in the `x1` column
+
 ```{r}
 #| size: "scriptsize"
 df[5,1]
@@ -148,6 +152,7 @@ Ask for the the value of in the third column and the fifth row of the data frame
 **Solution:**
 
 Getting the 5th row, 3rd column
+
 ```{r}
 #| size: "scriptsize"
 df[5,3]
@@ -159,6 +164,7 @@ Create a sequence from 1 to 10 by 2 and use it to print the odd rows of the data
 **Solution:**
 
 Printing the odd rows in data frame by using `seq` function.
+
 ```{r}
 #| size: "scriptsize"
 df[seq(1, 10, 2),]
@@ -170,6 +176,7 @@ Below, I create an empty column called `x12`. Fill in the details of the `for(..
 **Solution:**
 
 Created a new column `df$x12` that is a product of values in columns `x1` and `x2`.
+
 ```{r}
 #| size: "scriptsize"
 n <- nrow(df)                # How many rows to we have to fill? 10 rows
@@ -189,6 +196,7 @@ Use your function to create a new column `total.score` in our data frame `df`.
 **Solution:**
 
 Created a `calculate.score` function and used a for-loop to loop throuh elements in the column. I then used the formula given to compute and store the results in `total.score`.
+
 ```{r}
 #| size: "scriptsize"
 calculate.score<-function(x_1,x_2,x_3){
@@ -208,6 +216,7 @@ Create a function called `evaluate.row(...)` that takes one argument and returns
 **Solution:**
 
 Used if-statements in the `evaluate.row` function to determine is a number is "high", "low", or "mid"
+
 ```{r}
 #| size: "scriptsize"
 evaluate.row<-function(dat){
@@ -269,6 +278,7 @@ Install and load the `rvest` package [@rvest].
 **Solution:**
 
 Installed and loaded `rvest` package.
+
 ```{r}
 #| size: "scriptsize"
 
@@ -284,6 +294,7 @@ Load the html of the `website/KimchiGrilledCheese.html` using the `read_html()` 
 **Solution:**
 
 Read the html website using the `read_html()` function
+
 ```{r}
 #| size: "scriptsize"
 recipe.item<-read_html("website/KimchiGrilledCheese.html")
@@ -301,6 +312,7 @@ Find the name of the Ingredients section of the website and pull the HTML of the
 **Solution:**
 
 Pulled the ingredients section by ID then stored it in the `ingredients.section` variable
+
 ```{r}
 #| size: "scriptsize"
 ingredients.section<-html_element(recipe.item, "#ingredients")
@@ -314,6 +326,7 @@ Now, we want to obtain all of the itemized items. Find the element type the indi
 **Solution:**
 
 Found all itemized items using `html_elements()` then stores them in `ingredients`
+
 ```{r}
 #| size: "scriptsize"
 ingredients<-html_elements(ingredients.section,"li")
@@ -326,6 +339,7 @@ Similar to Part c. Find the name of the Instructions section of the website and 
 **Solution:**
 
 Pulled the instructions section by ID using `html_element()` and stored it in the `instruction.section` variable
+
 ```{r}
 #| size: "scriptsize"
 instructions.section<-html_element(recipe.item,"#instructions")
@@ -338,6 +352,7 @@ Now, we want to obtain all of the enumerated items. Find the element type the in
 **Solution:**
 
 Pulled all the individual instructions then stored them in `instructions`
+
 ```{r}
 #| size: "scriptsize"
 instructions<-html_elements(instructions.section,"li")
@@ -351,6 +366,7 @@ Find the class of the recipe image and pull the HTML using `html_element(...)` a
 **Solutions:**
 
 Pulled the image html by its class name using `html_element()` and stored it in `image.element` object
+
 ```{r}
 #| size: "scriptsize"
 image.element<-html_element(recipe.item,".figure-img")
@@ -364,6 +380,7 @@ Use the `html_attr(...)` function to pull the source link ("src"). Then, use `pa
 **Solution:**
 
 Pulled image source link by attribute then pasted "website/" to the link using `paste()`. Stored the final link in `image.url`
+
 ```{r}
 #| size: "scriptsize"
 image.url <-html_attr(image.element,"src")
@@ -379,6 +396,7 @@ Now that we have all the things we need, let's try to print the recipe. Below, I
 **Solution:**
 
 Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
+
 ```{r}
 #| echo: false
 #| results: asis
@@ -392,6 +410,7 @@ cat(paste('![', recipe.title, '](', image.url, "){width=50%}", sep=""))
 **Solution:**
 
 Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
+
 ```{r}
 #| echo: false
 #| results: asis
@@ -403,7 +422,8 @@ cat(formatted_list, sep = "\n")
 
 **Solution:**
 
-Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code.
+Removed `#| eval: false` from the YAML header and added `#| echo: false` and `#| results: 'asis'` to test code. 
+
 ```{r}
 #| echo: false
 #| results: asis
